@@ -217,10 +217,9 @@ stage_installed_dir() {
 }
 
 # `omarchy theme install` clones into ~/.config/omarchy/themes, so a .git
-# directory there means the contents came from a stranger and are held to the
-# list above. A directory the user wrote themselves, and a symlink to their own
-# working copy, are theirs to fill however they like -- the same distinction
-# omarchy-theme-extras draws when it decides which themes it may pull.
+# entry there means the contents came from a repo and are held to the list
+# above. A directory the user wrote themselves, and a symlink to their own
+# working copy, are theirs to fill however they like.
 theme_came_from_a_repo() {
   local source="$1"
 
