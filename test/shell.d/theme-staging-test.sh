@@ -231,6 +231,8 @@ set_theme nested || fail "omarchy-theme-set applies a theme with a subdirectory"
 assert_not_staged sub/hyprland.lua "a subdirectory cannot smuggle Lua past the denylist"
 assert_not_staged sub/alacritty.toml "a subdirectory cannot smuggle a terminal config past the denylist"
 assert_staged sub/art.png "colour and images in a subdirectory are still staged"
+grep -qF "sub/hyprland.lua" "$test_tmp/stderr" ||
+  fail "a file dropped from a subdirectory is reported with its full path" "$(cat "$test_tmp/stderr")"
 
 pass "the denylist applies inside subdirectories"
 
